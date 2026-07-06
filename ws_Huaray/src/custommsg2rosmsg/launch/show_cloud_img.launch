@@ -1,0 +1,16 @@
+<launch>
+    <!-- 参数：是否启动 RViz -->
+    <arg name="use_rviz" default="true" />
+
+    <!-- 启动 custom2ros_node 节点 -->
+    <node pkg="custommsg2rosmsg" type="custom2ros_node" name="custom2ros_name"  output="screen" />
+
+    <!-- 引入另一个 launch 文件 -->
+    <include file="$(find huaray_ros)/launch/huaray.launch" />
+
+    <!-- 条件启动 RViz -->
+    <group if="$(arg use_rviz)">
+        <node name="rviz" pkg="rviz" type="rviz" args="-d $(find custommsg2rosmsg)/rviz/show_cloud_img.rviz" output="screen" />
+    </group>
+</launch>
+

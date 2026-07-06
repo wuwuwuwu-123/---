@@ -1,0 +1,17 @@
+# ROS 编译生成文件夹
+ws_*/build/
+ws_*/devel/
+ws_*/install/
+zed_ws
+*.txt
+*.vscode
+
+# 其他ROS常见垃圾文件
+*.log
+*.swp
+*.swo
+.DS_Store
+__pycache__/
+*.pyc
+CMakeLists.txt.user
+catkin_generated/

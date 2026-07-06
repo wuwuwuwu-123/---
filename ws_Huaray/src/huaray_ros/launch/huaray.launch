@@ -1,0 +1,17 @@
+<launch>
+    <!-- 参数：是否启动 RViz -->
+    <arg name="use_rviz" default="false" />
+
+    <rosparam file="$(find huaray_ros)/config/camera.yaml" command="load" />
+    <rosparam file="$(find huaray_ros)/config/camera_intrinsics.yaml" command="load" />
+
+    <!-- 启动 my_huaray_node 节点 -->
+    <node pkg="huaray_ros" type="my_huaray_node" name="huaray_name"  output="screen" />
+    <!-- <node pkg="huaray_ros" type="other_huaray_node" name="huaray_name"  output="screen" /> -->
+
+    <!-- 条件启动 RViz -->
+    <group if="$(arg use_rviz)">
+        <node name="rviz" pkg="rviz" type="rviz" args="-d $(find huaray_ros)/rviz/huaray.rviz" output="screen" />
+    </group>
+</launch>
+
